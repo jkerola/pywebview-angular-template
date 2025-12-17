@@ -1,0 +1,4 @@
+include dist/frontend/browser/*.html
+include dist/frontend/browser/*.js
+include dist/frontend/browser/*.ico
+include dist/frontend/browser/*.css

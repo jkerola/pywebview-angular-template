@@ -1,0 +1,28 @@
+[project]
+name = "pwa"
+version = "1.0.0"
+description = "PyWebView + Angular project template"
+readme = "README.md"
+dependencies = [
+    "watchdog",
+    "pywebview; platform_system != 'Linux'",
+    "pywebview[gtk]; platform_system == 'Linux'",
+]
+
+[build-system]
+requires = [
+    "setuptools"
+]
+
+build-backend = "setuptools.build_meta"
+
+[project.gui-scripts]
+pwa = "src.pysrc.main:run"
+
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = [""]
+
