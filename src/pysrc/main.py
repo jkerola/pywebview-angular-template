@@ -4,6 +4,8 @@ from watchdog import events, observers
 from .api import Api
 from importlib.resources import files
 
+logging.getLogger("pywebview").disabled = True
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s][%(name)s] %(message)s",
@@ -27,7 +29,7 @@ class _DevEventHandler(events.FileSystemEventHandler):
         )
 
     def on_modified(self, event: events.FileSystemEvent) -> None:
-        if event.src_path.startswith(self.frontend_path):
+        if "dist/frontend/browser" in event.src_path:
             self.window.load_url("index.html")
             self.window.load_css("styles.css")
 
@@ -41,7 +43,7 @@ def run(debug: bool = False, reload=False):
     """
     base_path = files("dist").joinpath("frontend/browser")
     if reload:
-        handler = _DevEventHandler(base_path)
+        handler = _DevEventHandler(str(base_path))
         observer = observers.Observer()
         observer.schedule(handler, ".", recursive=True)
         observer.start()
