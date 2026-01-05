@@ -63,4 +63,4 @@ python -m build
 
 ## API typing
 
-The `src/app/typings.d.ts` contains the typescript definitions for the `src/python/api.py` class. It is recommended to update the types when modifying the API. Note that all functions return a `Promise<type>`, which can be converted into an observable using the `from` function from `rxjs`.
+The `src/app/window.interface.ts` contains the typescript definitions for the `src/python/api.py` class. It is recommended to update the types when modifying the API. Note that all functions return a `Promise<type>`, which can be converted into an observable using the `from` function from `rxjs`.
